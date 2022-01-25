@@ -13,7 +13,6 @@ public class ModItemModels extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
-        singleTexture(Registration.POINTER_ITEM.get().getRegistryName().getPath(), mcLoc("item/generated"),
-                "layer0", modLoc("item/pointer"));
+        // Pointer model is custom.
     }
 }

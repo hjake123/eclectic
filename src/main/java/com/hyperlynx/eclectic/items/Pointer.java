@@ -34,7 +34,7 @@ public class Pointer extends Item {
     public void onUseTick(@NotNull Level level, @NotNull LivingEntity user, @NotNull ItemStack stack, int remainingUseDuration) {
         if(level.isClientSide() && user.getType().equals(EntityType.PLAYER)) {
             BlockHitResult ray = Helper.playerRayTrace(level, (Player) user, ClipContext.Fluid.NONE, ClipContext.Block.VISUAL, RANGE);
-            level.addParticle(new DustParticleOptions(new Vector3f(1.0f, 0.1f, 0.05f), 1.0f),
+            level.addParticle(DustParticleOptions.REDSTONE,
                     ray.getLocation().x, ray.getLocation().y, ray.getLocation().z,
                     0, 0, 0);
         }

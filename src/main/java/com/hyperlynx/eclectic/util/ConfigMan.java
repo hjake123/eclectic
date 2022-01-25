@@ -1,4 +1,4 @@
-package com.hyperlynx.eclectic;
+package com.hyperlynx.eclectic.util;
 
 import net.minecraftforge.common.ForgeConfigSpec;
 import org.apache.commons.lang3.tuple.Pair;

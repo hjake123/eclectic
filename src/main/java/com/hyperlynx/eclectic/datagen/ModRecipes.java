@@ -31,12 +31,10 @@ public class ModRecipes extends RecipeProvider {
         ShapedRecipeBuilder.shaped(Registration.POINTER_ITEM.get())
                 .pattern("cac")
                 .pattern("crc")
-                .pattern("#c#")
+                .pattern(" c ")
                 .define('c', Tags.Items.INGOTS_COPPER)
                 .define('a', Tags.Items.GEMS_AMETHYST)
                 .define('r', Tags.Items.DUSTS_REDSTONE)
-                .define('#', Ingredient.EMPTY)
-                .group(EclecticMod.MODID)
                 .save(consumer);
     }
 }

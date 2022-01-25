@@ -14,5 +14,6 @@ public class ModItemModels extends ItemModelProvider {
     @Override
     protected void registerModels() {
         // Pointer model is custom.
+        withExistingParent(Registration.WEEPING_OBSIDIAN.get().getRegistryName().getPath(), modLoc("block/weeping_obsidian"));
     }
 }

@@ -35,6 +35,7 @@ public class ModRecipes extends RecipeProvider {
                 .define('c', Tags.Items.INGOTS_COPPER)
                 .define('a', Tags.Items.GEMS_AMETHYST)
                 .define('r', Tags.Items.DUSTS_REDSTONE)
+                .unlockedBy("copperGet", InventoryChangeTrigger.TriggerInstance.hasItems(Items.COPPER_INGOT))
                 .save(consumer);
     }
 }

@@ -15,5 +15,6 @@ public class ModLanguageProvider extends LanguageProvider {
     @Override
     protected void addTranslations() {
         add(Registration.POINTER_ITEM.get(), "Pointer");
+        add(Registration.WEEPING_OBSIDIAN.get(), "Weeping Obsidian");
     }
 }

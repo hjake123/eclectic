@@ -1,3 +1,6 @@
-cda3748c242efce318a804e3e8aec02b708d76db assets/eclectic/lang/en_us.json
-4848e42e6d5ec84df939673fe10cf421064c979e data/eclectic/advancements/recipes/tools/pointer.json
-e56682a91fad1d5e10a16a693003eaf283491488 data/eclectic/recipes/pointer.json
+777636a049ef735cef6a8d6696b7c96d0ef0c518 assets/eclectic/blockstates/weeping_obsidian.json
+a513ed81afc4a1e666dff553b81120a55c598bc3 assets/eclectic/lang/en_us.json
+7b37e8da38044d692780e7dc276d48b4452324b8 assets/eclectic/models/block/weeping_obsidian.json
+55090bbd78654d6fbf4bc8db29eb0579ccb30eb4 assets/eclectic/models/item/weeping_obsidian.json
+890151e9430ddb5c0091b4c39bc2fc3529da2984 data/eclectic/advancements/recipes/tools/pointer.json
+7df05c73de3191e25bdc79ba2fe589ddc0dbd246 data/eclectic/recipes/pointer.json

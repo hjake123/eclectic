@@ -15,5 +15,10 @@ public class ModItemModels extends ItemModelProvider {
     protected void registerModels() {
         // Pointer model is custom.
         withExistingParent(Registration.WEEPING_OBSIDIAN.get().getRegistryName().getPath(), modLoc("block/weeping_obsidian"));
+        withExistingParent(Registration.SOBBING_OBSIDIAN.get().getRegistryName().getPath(), modLoc("block/sobbing_obsidian"));
+        withExistingParent(Registration.RAGING_OBSIDIAN.get().getRegistryName().getPath(), modLoc("block/raging_obsidian"));
+        withExistingParent(Registration.MOURNING_OBSIDIAN.get().getRegistryName().getPath(), modLoc("block/mourning_obsidian"));
+        withExistingParent(Registration.DEAD_OBSIDIAN.get().getRegistryName().getPath(), modLoc("block/depleted_obsidian"));
+
     }
 }

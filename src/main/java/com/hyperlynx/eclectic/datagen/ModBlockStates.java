@@ -14,5 +14,10 @@ public class ModBlockStates extends BlockStateProvider {
     @Override
     protected void registerStatesAndModels() {
         simpleBlock(Registration.WEEPING_OBSIDIAN.get());
+        simpleBlock(Registration.SOBBING_OBSIDIAN.get());
+        simpleBlock(Registration.RAGING_OBSIDIAN.get());
+        simpleBlock(Registration.MOURNING_OBSIDIAN.get());
+        simpleBlock(Registration.DEAD_OBSIDIAN.get());
+
     }
 }

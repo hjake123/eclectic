@@ -1,7 +1,7 @@
 package com.hyperlynx.eclectic;
 
-import com.hyperlynx.eclectic.blocks.WeepingObsidianBlock;
-import com.hyperlynx.eclectic.items.Pointer;
+import com.hyperlynx.eclectic.blocks.*;
+import com.hyperlynx.eclectic.items.*;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
@@ -26,20 +26,49 @@ public class Registration {
         ITEMS.register(bus);
     }
 
-    private static final Item.Properties ITEMPROP = new Item.Properties();
     public static final RegistryObject<Item> POINTER_ITEM = ITEMS.register("pointer",
-            () -> new Pointer(ITEMPROP.stacksTo(1).tab(CreativeModeTab.TAB_TOOLS)));
+            () -> new Pointer(new Item.Properties().stacksTo(1).tab(CreativeModeTab.TAB_TOOLS)));
 
     private static final BlockBehaviour.Properties STONEPROP =  Block.Properties.of(Material.STONE);
     public static final RegistryObject<Block> WEEPING_OBSIDIAN = BLOCKS.register("weeping_obsidian",
             () -> new WeepingObsidianBlock(STONEPROP
                     .requiresCorrectToolForDrops()
-                    .strength(49.0F, 1100.0F)
-                    .lightLevel((BlockState bs) -> {return 10;})));
-    public static final RegistryObject<Item> WEEPING_OBSIDIAN_ITEM = fromBlock(WEEPING_OBSIDIAN);
+                    .strength(5.0F, 1100.0F)
+                    .lightLevel((BlockState bs) -> 10)));
+    public static final RegistryObject<Item> WEEPING_OBSIDIAN_ITEM = fromBlock(WEEPING_OBSIDIAN, CreativeModeTab.TAB_BUILDING_BLOCKS);
 
-    public static <B extends Block> RegistryObject<Item> fromBlock(RegistryObject<B> block) {
-        return ITEMS.register(block.getId().getPath(), () -> new BlockItem(block.get(), ITEMPROP));
+    public static final RegistryObject<Block> SOBBING_OBSIDIAN = BLOCKS.register("sobbing_obsidian",
+            () -> new SobbingObsidianBlock(STONEPROP
+                    .requiresCorrectToolForDrops()
+                    .strength(4.0F, 1000.0F)
+                    .lightLevel((BlockState bs) -> 6)
+                    .friction(0.99F)));
+    public static final RegistryObject<Item> SOBBING_OBSIDIAN_ITEM = fromBlock(SOBBING_OBSIDIAN, CreativeModeTab.TAB_BUILDING_BLOCKS);
+
+    public static final RegistryObject<Block> RAGING_OBSIDIAN = BLOCKS.register("raging_obsidian",
+            () -> new RagingObsidianBlock(STONEPROP
+                    .requiresCorrectToolForDrops()
+                    .strength(4.0F, 2000.0F)
+                    .lightLevel((BlockState bs) -> 14)));
+    public static final RegistryObject<Item> RAGING_OBSIDIAN_ITEM = fromBlock(RAGING_OBSIDIAN, CreativeModeTab.TAB_BUILDING_BLOCKS);
+
+    public static final RegistryObject<Block> MOURNING_OBSIDIAN = BLOCKS.register("mourning_obsidian",
+            () -> new MourningObsidianBlock(STONEPROP
+                    .requiresCorrectToolForDrops()
+                    .strength(3.0F, 50.0F)
+                    .lightLevel((BlockState bs) -> 0)));
+    public static final RegistryObject<Item> MOURNING_OBSIDIAN_ITEM = fromBlock(MOURNING_OBSIDIAN, CreativeModeTab.TAB_BUILDING_BLOCKS);
+
+    public static final RegistryObject<Block> DEAD_OBSIDIAN = BLOCKS.register("depleted_obsidian",
+            () -> new Block(BlockBehaviour.Properties.of(Material.STONE)
+                    .requiresCorrectToolForDrops()
+                    .strength(1.0F, 1.0F)
+                    .lightLevel((BlockState bs) -> 0)));
+    public static final RegistryObject<Item> DEAD_OBSIDIAN_ITEM = fromBlock(DEAD_OBSIDIAN, CreativeModeTab.TAB_BUILDING_BLOCKS);
+
+    // Helper method for BlockItem registration
+    public static <B extends Block> RegistryObject<Item> fromBlock(RegistryObject<B> block, CreativeModeTab tab) {
+        return ITEMS.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));
     }
 
 }

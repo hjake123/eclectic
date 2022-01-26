@@ -1,13 +1,17 @@
 package com.hyperlynx.eclectic.blocks;
 
+import com.hyperlynx.eclectic.Registration;
+import com.ibm.icu.text.MessagePattern;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.CryingObsidianBlock;
 import net.minecraft.world.level.block.state.BlockState;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Random;
 
@@ -17,13 +21,19 @@ public class WeepingObsidianBlock extends Block {
     }
 
     @Override
-    public void randomTick(BlockState pState, ServerLevel pLevel, BlockPos pPos, Random pRandom){
-        // TODO: Implement behavior and figure out why that method's deprecated.
+    public boolean isRandomlyTicking(@NotNull BlockState pState) {
+        return true;
+    }
+    @Override
+    public void randomTick(@NotNull BlockState state, @NotNull ServerLevel level, @NotNull BlockPos pos, @NotNull Random random){
+        if(level.isRaining() && level.canSeeSky(pos.above())){
+            level.setBlock(pos, Registration.SOBBING_OBSIDIAN.get().defaultBlockState(), 2);
+        }
     }
 
     // Stolen from CryingObsidianBlock, because, well obviously
     @Override
-    public void animateTick(BlockState pState, Level pLevel, BlockPos pPos, Random pRandom) {
+    public void animateTick(@NotNull BlockState pState, @NotNull Level pLevel, @NotNull BlockPos pPos, Random pRandom) {
         if (pRandom.nextInt(4) == 0) {
             Direction direction = Direction.getRandom(pRandom);
             if (direction != Direction.UP) {

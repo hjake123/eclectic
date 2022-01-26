@@ -1,4 +1,8 @@
 {
+  "block.eclectic.depleted_obsidian": "Depleted Obsidian",
+  "block.eclectic.mourning_obsidian": "Mourning Obsidian",
+  "block.eclectic.raging_obsidian": "Raging Obsidian",
+  "block.eclectic.sobbing_obsidian": "Sobbing Obsidian",
   "block.eclectic.weeping_obsidian": "Weeping Obsidian",
   "item.eclectic.pointer": "Pointer"
 }

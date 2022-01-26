@@ -16,5 +16,10 @@ public class ModLanguageProvider extends LanguageProvider {
     protected void addTranslations() {
         add(Registration.POINTER_ITEM.get(), "Pointer");
         add(Registration.WEEPING_OBSIDIAN.get(), "Weeping Obsidian");
+        add(Registration.SOBBING_OBSIDIAN.get(), "Sobbing Obsidian");
+        add(Registration.RAGING_OBSIDIAN.get(), "Raging Obsidian");
+        add(Registration.MOURNING_OBSIDIAN.get(), "Mourning Obsidian");
+        add(Registration.DEAD_OBSIDIAN.get(), "Depleted Obsidian");
+
     }
 }

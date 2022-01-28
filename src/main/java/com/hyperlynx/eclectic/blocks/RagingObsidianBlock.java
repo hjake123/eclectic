@@ -47,7 +47,7 @@ public class RagingObsidianBlock extends Block {
             }
         }
 
-        if(level.isRaining() && level.canSeeSky(pos.above())){
+        if((level.isRaining() && level.canSeeSky(pos.above())) || level.isWaterAt(pos.above())){
             if(level.isClientSide()){
                 level.playLocalSound(center.x, center.y, center.z, SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS, 0.5F, (float) (2.6 + (level.random.nextFloat() - level.random.nextFloat()) * 0.8), false);
                 for(int l = 0; l < 8; ++l) {

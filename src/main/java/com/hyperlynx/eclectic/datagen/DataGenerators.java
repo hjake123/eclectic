@@ -2,6 +2,7 @@ package com.hyperlynx.eclectic.datagen;
 
 import com.hyperlynx.eclectic.EclecticMod;
 import net.minecraft.data.DataGenerator;
+import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.forge.event.lifecycle.GatherDataEvent;
@@ -13,10 +14,12 @@ public class DataGenerators {
     public static void gatherData(GatherDataEvent event) {
         DataGenerator generator = event.getGenerator();
         if (event.includeServer()) {
-            generator.addProvider(new ModBlockStates(generator, event.getExistingFileHelper()));
             generator.addProvider(new ModRecipes(generator));
+            generator.addProvider(new ModLootTables(generator));
+            generator.addProvider(new ModBlockTags(generator, event.getExistingFileHelper()));
         }
         if (event.includeClient()) {
+            generator.addProvider(new ModBlockStates(generator, event.getExistingFileHelper()));
             generator.addProvider(new ModItemModels(generator, event.getExistingFileHelper()));
             generator.addProvider(new ModLanguageProvider(generator, "en_us"));
         }

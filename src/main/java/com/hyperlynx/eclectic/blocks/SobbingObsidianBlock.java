@@ -5,11 +5,17 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
 
+import javax.annotation.Nullable;
 import java.util.Random;
 
 public class SobbingObsidianBlock extends Block {
@@ -17,6 +23,18 @@ public class SobbingObsidianBlock extends Block {
         super(prop);
     }
 
+    @Override
+    public void setPlacedBy(@NotNull Level level, @NotNull BlockPos pos, @NotNull BlockState state, @Nullable LivingEntity placer, @NotNull ItemStack stack) {
+        if(level.dimensionType().ultraWarm()){
+            if(level.isClientSide()){
+                level.playSound((Player)placer, pos, SoundEvents.FIRE_EXTINGUISH, SoundSource.BLOCKS, 0.5F, 2.6F + (level.random.nextFloat() - level.random.nextFloat()) * 0.8F);
+                for(int l = 0; l < 8; ++l) {
+                    level.addParticle(ParticleTypes.LARGE_SMOKE, (double)pos.getX() + Math.random(), (double)pos.getY() + Math.random(), (double)pos.getZ() + Math.random(), 0.0D, 0.0D, 0.0D);
+                }
+            }
+            level.setBlock(pos, Registration.DEAD_OBSIDIAN.get().defaultBlockState(), 2);
+        }
+    }
     @Override
     public boolean isRandomlyTicking(@NotNull BlockState pState) {
         return true;

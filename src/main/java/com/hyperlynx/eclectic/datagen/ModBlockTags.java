@@ -6,9 +6,12 @@ import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.FluidTags;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+
+import java.sql.Ref;
 
 public class ModBlockTags extends BlockTagsProvider{
 
@@ -30,6 +33,16 @@ public class ModBlockTags extends BlockTagsProvider{
                 .add(Registration.RAGING_OBSIDIAN.get())
                 .add(Registration.MOURNING_OBSIDIAN.get())
                 .add(Registration.DEAD_OBSIDIAN.get());
+        tag(BlockTags.PIGLIN_REPELLENTS)
+                .add(Registration.RAGING_OBSIDIAN.get());
+        tag(BlockTags.SOUL_SPEED_BLOCKS)
+                .add(Registration.MOURNING_OBSIDIAN.get());
+        tag(BlockTags.STRIDER_WARM_BLOCKS)
+                .add(Registration.RAGING_OBSIDIAN.get());
+        tag(BlockTags.HOGLIN_REPELLENTS)
+                .add(Registration.MOURNING_OBSIDIAN.get());
+        tag(BlockTags.ENDERMAN_HOLDABLE)
+                .add(Registration.MOURNING_OBSIDIAN.get());
     }
 
 

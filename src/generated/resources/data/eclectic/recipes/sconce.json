@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " a ",
+    "ggg"
+  ],
+  "key": {
+    "g": {
+      "tag": "forge:ingots/gold"
+    },
+    "a": {
+      "tag": "forge:gems/amethyst"
+    }
+  },
+  "result": {
+    "item": "eclectic:sconce"
+  }
+}

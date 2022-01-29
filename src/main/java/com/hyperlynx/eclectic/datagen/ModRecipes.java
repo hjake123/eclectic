@@ -13,6 +13,7 @@ import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.ForgeTagHandler;
 import net.minecraftforge.common.Tags;
 import net.minecraftforge.common.data.ForgeItemTagsProvider;
@@ -36,6 +37,18 @@ public class ModRecipes extends RecipeProvider {
                 .define('a', Tags.Items.GEMS_AMETHYST)
                 .define('r', Tags.Items.DUSTS_REDSTONE)
                 .unlockedBy("copperGet", InventoryChangeTrigger.TriggerInstance.hasItems(Items.COPPER_INGOT))
+                .save(consumer);
+        ShapelessRecipeBuilder.shapeless(Registration.WEEPING_OBSIDIAN_ITEM.get())
+                .requires(Blocks.CRYING_OBSIDIAN)
+                .requires(Items.GHAST_TEAR)
+                .unlockedBy("cryingObsidianGet", InventoryChangeTrigger.TriggerInstance.hasItems(Items.GHAST_TEAR))
+                .save(consumer);
+        ShapedRecipeBuilder.shaped(Registration.SCONCE_ITEM.get())
+                .pattern(" a ")
+                .pattern("ggg")
+                .define('g', Tags.Items.INGOTS_GOLD)
+                .define('a', Tags.Items.GEMS_AMETHYST)
+                .unlockedBy("gemGet", InventoryChangeTrigger.TriggerInstance.hasItems(Items.AMETHYST_SHARD))
                 .save(consumer);
     }
 }

@@ -17,5 +17,10 @@ public class ModLootTables extends BaseLootTableProvider{
         lootTables.put(Registration.RAGING_OBSIDIAN.get(), createSimpleTable("raging_obsidian", Registration.RAGING_OBSIDIAN.get()));
         lootTables.put(Registration.MOURNING_OBSIDIAN.get(), createSimpleTable("weeping_obsidian", Registration.MOURNING_OBSIDIAN.get()));
         lootTables.put(Registration.DEAD_OBSIDIAN.get(), createSilkTouchTable("dead_obsidian", Registration.DEAD_OBSIDIAN.get(), Items.AIR, 0, 0));
+        lootTables.put(Registration.SCONCE.get(), createSimpleTable("sconce", Registration.SCONCE.get()));
+        lootTables.put(Registration.GLOW_SCONCE.get(), createSilkTouchTable("glow_sconce", Registration.GLOW_SCONCE.get(), Registration.SCONCE_ITEM.get(), 1, 1));
+        lootTables.put(Registration.BLAZE_SCONCE.get(), createSilkTouchTable("blaze_sconce", Registration.BLAZE_SCONCE.get(), Registration.SCONCE_ITEM.get(), 1, 1));
+        lootTables.put(Registration.SOUL_SCONCE.get(), createSilkTouchTable("soul_sconce", Registration.SOUL_SCONCE.get(), Registration.SCONCE_ITEM.get(), 1, 1));
+
     }
 }

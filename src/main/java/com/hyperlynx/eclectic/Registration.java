@@ -1,10 +1,8 @@
 package com.hyperlynx.eclectic;
 
-import com.hyperlynx.eclectic.blocks.MourningObsidianBlock;
-import com.hyperlynx.eclectic.blocks.RagingObsidianBlock;
-import com.hyperlynx.eclectic.blocks.SobbingObsidianBlock;
-import com.hyperlynx.eclectic.blocks.WeepingObsidianBlock;
+import com.hyperlynx.eclectic.blocks.*;
 import com.hyperlynx.eclectic.items.Pointer;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
@@ -69,9 +67,36 @@ public class Registration {
                     .sound(SoundType.CALCITE)));
     public static final RegistryObject<Item> DEAD_OBSIDIAN_ITEM = fromBlock(DEAD_OBSIDIAN, CreativeModeTab.TAB_BUILDING_BLOCKS);
 
+    public static final RegistryObject<Block> SCONCE = BLOCKS.register("sconce",
+            () -> new SconceBlock(BlockBehaviour.Properties.of(Material.AMETHYST)
+                    .strength(1.0F)
+                    .noOcclusion()
+                    .lightLevel((BlockState bs) -> 3)));
+    public static final RegistryObject<Item> SCONCE_ITEM = fromBlock(SCONCE, CreativeModeTab.TAB_DECORATIONS);
+
+    public static final RegistryObject<Block> GLOW_SCONCE = BLOCKS.register("glow_sconce",
+            () -> new SconceBlock(BlockBehaviour.Properties.of(Material.AMETHYST)
+                    .strength(1.0F)
+                    .noOcclusion()
+                    .lightLevel((BlockState bs) -> 15)));
+    public static final RegistryObject<Item> GLOW_SCONCE_ITEM = fromBlock(GLOW_SCONCE, CreativeModeTab.TAB_DECORATIONS);
+
+    public static final RegistryObject<Block> BLAZE_SCONCE = BLOCKS.register("blaze_sconce",
+            () -> new FlareSconceBlock(BlockBehaviour.Properties.of(Material.AMETHYST)
+                    .strength(1.0F)
+                    .noOcclusion()
+                    .lightLevel((BlockState bs) -> 7),ParticleTypes.FLAME));
+    public static final RegistryObject<Item> BLAZE_SCONCE_ITEM = fromBlock(BLAZE_SCONCE, CreativeModeTab.TAB_DECORATIONS);
+
+    public static final RegistryObject<Block> SOUL_SCONCE = BLOCKS.register("soul_sconce",
+            () -> new FlareSconceBlock(BlockBehaviour.Properties.of(Material.AMETHYST)
+                    .strength(1.0F)
+                    .noOcclusion()
+                    .lightLevel((BlockState bs) -> 6),ParticleTypes.SOUL_FIRE_FLAME));
+    public static final RegistryObject<Item> SOUL_SCONCE_ITEM = fromBlock(SOUL_SCONCE, CreativeModeTab.TAB_DECORATIONS);
+
     // Helper method for BlockItem registration
     public static <B extends Block> RegistryObject<Item> fromBlock(RegistryObject<B> block, CreativeModeTab tab) {
         return ITEMS.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));
     }
-
 }

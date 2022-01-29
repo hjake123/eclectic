@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "eclectic:sconce"
+    ]
+  },
+  "criteria": {
+    "gemGet": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:amethyst_shard"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "eclectic:sconce"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "gemGet",
+      "has_the_recipe"
+    ]
+  ]
+}

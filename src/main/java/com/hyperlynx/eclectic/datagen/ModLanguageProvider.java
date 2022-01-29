@@ -20,6 +20,9 @@ public class ModLanguageProvider extends LanguageProvider {
         add(Registration.RAGING_OBSIDIAN.get(), "Raging Obsidian");
         add(Registration.MOURNING_OBSIDIAN.get(), "Mourning Obsidian");
         add(Registration.DEAD_OBSIDIAN.get(), "Depleted Obsidian");
-
+        add(Registration.SCONCE.get(), "Amethyst Sconce");
+        add(Registration.GLOW_SCONCE.get(), "Glowing Sconce");
+        add(Registration.BLAZE_SCONCE.get(), "Blazing Sconce");
+        add(Registration.SOUL_SCONCE.get(), "Soulful Sconce");
     }
 }

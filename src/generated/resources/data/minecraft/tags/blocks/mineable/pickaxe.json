@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "eclectic:weeping_obsidian",
+    "eclectic:sobbing_obsidian",
+    "eclectic:raging_obsidian",
+    "eclectic:mourning_obsidian",
+    "eclectic:depleted_obsidian",
+    "eclectic:sconce",
+    "eclectic:glow_sconce",
+    "eclectic:blaze_sconce",
+    "eclectic:soul_sconce"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "weighed=false": {
+      "model": "eclectic:block/phantom_quilt"
+    },
+    "weighed=true": {
+      "model": "eclectic:block/phantom_quilt_low"
+    }
+  }
+}

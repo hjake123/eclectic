@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "eclectic:phantom_quilt"
+    ]
+  },
+  "criteria": {
+    "membrane\u0027d": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:phantom_membrane"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "eclectic:phantom_quilt"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "membrane\u0027d",
+      "has_the_recipe"
+    ]
+  ]
+}

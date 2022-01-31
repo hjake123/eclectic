@@ -24,5 +24,6 @@ public class ModLanguageProvider extends LanguageProvider {
         add(Registration.GLOW_SCONCE.get(), "Glowing Sconce");
         add(Registration.BLAZE_SCONCE.get(), "Blazing Sconce");
         add(Registration.SOUL_SCONCE.get(), "Soulful Sconce");
+        add(Registration.PHANTOM_QUILT.get(), "Phantom Quilt");
     }
 }

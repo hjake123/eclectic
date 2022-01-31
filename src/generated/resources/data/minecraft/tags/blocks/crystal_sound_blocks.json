@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "eclectic:sconce",
+    "eclectic:glow_sconce",
+    "eclectic:blaze_sconce",
+    "eclectic:soul_sconce"
+  ]
+}

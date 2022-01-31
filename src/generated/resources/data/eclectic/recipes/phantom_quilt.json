@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "psp",
+    "sps",
+    "psp"
+  ],
+  "key": {
+    "p": {
+      "item": "minecraft:phantom_membrane"
+    },
+    "s": {
+      "tag": "forge:string"
+    }
+  },
+  "result": {
+    "item": "eclectic:phantom_quilt"
+  }
+}

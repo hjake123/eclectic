@@ -11,7 +11,7 @@ import org.apache.logging.log4j.Logger;
 @Mod(EclecticMod.MODID)
 public class EclecticMod
 {
-    private static final Logger LOGGER = LogManager.getLogger();
+    public static final Logger LOGGER = LogManager.getLogger();
     public static final String MODID = "eclectic";
 
     public EclecticMod() {

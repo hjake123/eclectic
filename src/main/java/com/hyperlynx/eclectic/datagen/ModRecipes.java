@@ -50,5 +50,13 @@ public class ModRecipes extends RecipeProvider {
                 .define('a', Tags.Items.GEMS_AMETHYST)
                 .unlockedBy("gemGet", InventoryChangeTrigger.TriggerInstance.hasItems(Items.AMETHYST_SHARD))
                 .save(consumer);
+        ShapedRecipeBuilder.shaped(Registration.PHANTOM_QUILT_ITEM.get())
+                .pattern("psp")
+                .pattern("sps")
+                .pattern("psp")
+                .define('p', Items.PHANTOM_MEMBRANE)
+                .define('s', Tags.Items.STRING)
+                .unlockedBy("membrane'd", InventoryChangeTrigger.TriggerInstance.hasItems(Items.PHANTOM_MEMBRANE))
+                .save(consumer);
     }
 }

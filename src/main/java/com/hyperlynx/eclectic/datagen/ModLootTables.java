@@ -21,6 +21,6 @@ public class ModLootTables extends BaseLootTableProvider{
         lootTables.put(Registration.GLOW_SCONCE.get(), createSilkTouchTable("glow_sconce", Registration.GLOW_SCONCE.get(), Registration.SCONCE_ITEM.get(), 1, 1));
         lootTables.put(Registration.BLAZE_SCONCE.get(), createSilkTouchTable("blaze_sconce", Registration.BLAZE_SCONCE.get(), Registration.SCONCE_ITEM.get(), 1, 1));
         lootTables.put(Registration.SOUL_SCONCE.get(), createSilkTouchTable("soul_sconce", Registration.SOUL_SCONCE.get(), Registration.SCONCE_ITEM.get(), 1, 1));
-
+        lootTables.put(Registration.PHANTOM_QUILT.get(), createSimpleTable("quilt", Registration.PHANTOM_QUILT.get()));
     }
 }

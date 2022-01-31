@@ -44,9 +44,15 @@ public class ModBlockTags extends BlockTagsProvider{
         tag(BlockTags.STRIDER_WARM_BLOCKS)
                 .add(Registration.RAGING_OBSIDIAN.get());
         tag(BlockTags.HOGLIN_REPELLENTS)
-                .add(Registration.MOURNING_OBSIDIAN.get());
+                .add(Registration.MOURNING_OBSIDIAN.get())
+                .add(Registration.SOUL_SCONCE.get());
         tag(BlockTags.ENDERMAN_HOLDABLE)
                 .add(Registration.MOURNING_OBSIDIAN.get());
+        tag(BlockTags.CRYSTAL_SOUND_BLOCKS)
+                .add(Registration.SCONCE.get())
+                .add(Registration.GLOW_SCONCE.get())
+                .add(Registration.BLAZE_SCONCE.get())
+                .add(Registration.SOUL_SCONCE.get());
     }
 
 

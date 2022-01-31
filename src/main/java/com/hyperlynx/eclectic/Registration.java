@@ -1,6 +1,7 @@
 package com.hyperlynx.eclectic;
 
 import com.hyperlynx.eclectic.blocks.*;
+import com.hyperlynx.eclectic.items.PhantomQuiltItem;
 import com.hyperlynx.eclectic.items.Pointer;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.item.BlockItem;
@@ -94,6 +95,11 @@ public class Registration {
                     .noOcclusion()
                     .lightLevel((BlockState bs) -> 6),ParticleTypes.SOUL_FIRE_FLAME));
     public static final RegistryObject<Item> SOUL_SCONCE_ITEM = fromBlock(SOUL_SCONCE, CreativeModeTab.TAB_DECORATIONS);
+
+    public static final RegistryObject<Block> PHANTOM_QUILT = BLOCKS.register("phantom_quilt",
+            () -> new PhantomQuiltBlock(BlockBehaviour.Properties.of(Material.CLOTH_DECORATION)));
+    public static final RegistryObject<Item> PHANTOM_QUILT_ITEM = ITEMS.register("phantom_quilt",
+            () -> new PhantomQuiltItem(new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS).stacksTo(1)));
 
     // Helper method for BlockItem registration
     public static <B extends Block> RegistryObject<Item> fromBlock(RegistryObject<B> block, CreativeModeTab tab) {

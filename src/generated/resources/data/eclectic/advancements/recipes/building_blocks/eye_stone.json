@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "eclectic:eye_stone"
+    ]
+  },
+  "criteria": {
+    "eyeGet": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:ender_eye"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "eclectic:eye_stone"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "eyeGet",
+      "has_the_recipe"
+    ]
+  ]
+}

@@ -80,29 +80,40 @@ public class Registration {
                     .strength(1.0F)
                     .noOcclusion()
                     .lightLevel((BlockState bs) -> 15)));
-    public static final RegistryObject<Item> GLOW_SCONCE_ITEM = fromBlock(GLOW_SCONCE, CreativeModeTab.TAB_DECORATIONS);
+    public static final RegistryObject<Item> GLOW_SCONCE_ITEM = fromBlock(GLOW_SCONCE);
 
     public static final RegistryObject<Block> BLAZE_SCONCE = BLOCKS.register("blaze_sconce",
             () -> new FlareSconceBlock(BlockBehaviour.Properties.of(Material.AMETHYST)
                     .strength(1.0F)
                     .noOcclusion()
                     .lightLevel((BlockState bs) -> 7),ParticleTypes.FLAME));
-    public static final RegistryObject<Item> BLAZE_SCONCE_ITEM = fromBlock(BLAZE_SCONCE, CreativeModeTab.TAB_DECORATIONS);
+    public static final RegistryObject<Item> BLAZE_SCONCE_ITEM = fromBlock(BLAZE_SCONCE);
 
     public static final RegistryObject<Block> SOUL_SCONCE = BLOCKS.register("soul_sconce",
             () -> new FlareSconceBlock(BlockBehaviour.Properties.of(Material.AMETHYST)
                     .strength(1.0F)
                     .noOcclusion()
                     .lightLevel((BlockState bs) -> 6),ParticleTypes.SOUL_FIRE_FLAME));
-    public static final RegistryObject<Item> SOUL_SCONCE_ITEM = fromBlock(SOUL_SCONCE, CreativeModeTab.TAB_DECORATIONS);
+    public static final RegistryObject<Item> SOUL_SCONCE_ITEM = fromBlock(SOUL_SCONCE);
 
     public static final RegistryObject<Block> PHANTOM_QUILT = BLOCKS.register("phantom_quilt",
-            () -> new PhantomQuiltBlock(BlockBehaviour.Properties.of(Material.CLOTH_DECORATION)));
+            () -> new PhantomQuiltBlock(BlockBehaviour.Properties.of(Material.CLOTH_DECORATION)
+                    .sound(SoundType.WOOL)));
     public static final RegistryObject<Item> PHANTOM_QUILT_ITEM = ITEMS.register("phantom_quilt",
             () -> new PhantomQuiltItem(new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS).stacksTo(1)));
+
+    public static final RegistryObject<Block> EYE_STONE = BLOCKS.register("eye_stone",
+            () -> new Block(BlockBehaviour.Properties.of(Material.STONE)
+                    .requiresCorrectToolForDrops()));
+    public static final RegistryObject<Item> EYE_STONE_ITEM = fromBlock(EYE_STONE, CreativeModeTab.TAB_BUILDING_BLOCKS);
 
     // Helper method for BlockItem registration
     public static <B extends Block> RegistryObject<Item> fromBlock(RegistryObject<B> block, CreativeModeTab tab) {
         return ITEMS.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));
+    }
+
+    // Helper method for BlockItem registration without a tab
+    public static <B extends Block> RegistryObject<Item> fromBlock(RegistryObject<B> block) {
+        return ITEMS.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties()));
     }
 }

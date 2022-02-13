@@ -30,7 +30,8 @@ public class ModBlockTags extends BlockTagsProvider{
                 .add(Registration.SCONCE.get())
                 .add(Registration.GLOW_SCONCE.get())
                 .add(Registration.BLAZE_SCONCE.get())
-                .add(Registration.SOUL_SCONCE.get());
+                .add(Registration.SOUL_SCONCE.get())
+                .add(Registration.EYE_STONE.get());
         tag(BlockTags.NEEDS_DIAMOND_TOOL)
                 .add(Registration.WEEPING_OBSIDIAN.get())
                 .add(Registration.SOBBING_OBSIDIAN.get())
@@ -47,7 +48,8 @@ public class ModBlockTags extends BlockTagsProvider{
                 .add(Registration.MOURNING_OBSIDIAN.get())
                 .add(Registration.SOUL_SCONCE.get());
         tag(BlockTags.ENDERMAN_HOLDABLE)
-                .add(Registration.MOURNING_OBSIDIAN.get());
+                .add(Registration.MOURNING_OBSIDIAN.get())
+                .add(Registration.EYE_STONE.get());
         tag(BlockTags.CRYSTAL_SOUND_BLOCKS)
                 .add(Registration.SCONCE.get())
                 .add(Registration.GLOW_SCONCE.get())

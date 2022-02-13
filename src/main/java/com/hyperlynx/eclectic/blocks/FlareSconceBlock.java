@@ -29,10 +29,10 @@ public class FlareSconceBlock extends SconceBlock { // This is the Blazing Sconc
 
     @Override
     public void animateTick(@NotNull BlockState state, @NotNull Level level, @NotNull BlockPos pos, @NotNull Random random) {
-        for (int i = 0; i < 8; i++) {
-            double d0 = random.nextDouble() * 20 - 10;
-            double d1 = random.nextDouble() * 20 - 10;
-            double d2 = random.nextDouble() * 20 - 10;
+        for (int i = 0; i < 3; i++) {
+            double d0 = random.nextDouble() * 16 - 8;
+            double d1 = random.nextDouble() * 16 - 8;
+            double d2 = random.nextDouble() * 16 - 8;
             level.addParticle(particles, (double) pos.getX() + d0, (double) pos.getY() + d1, (double) pos.getZ() + d2, 0, 0, 0);
         }
     }

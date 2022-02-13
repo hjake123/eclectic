@@ -7,12 +7,10 @@ import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.advancements.CriterionTriggerInstance;
 import net.minecraft.advancements.critereon.InventoryChangeTrigger;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.data.recipes.FinishedRecipe;
-import net.minecraft.data.recipes.RecipeProvider;
-import net.minecraft.data.recipes.ShapedRecipeBuilder;
-import net.minecraft.data.recipes.ShapelessRecipeBuilder;
+import net.minecraft.data.recipes.*;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.item.crafting.StonecutterRecipe;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.common.ForgeTagHandler;
 import net.minecraftforge.common.Tags;
@@ -57,6 +55,9 @@ public class ModRecipes extends RecipeProvider {
                 .define('p', Items.PHANTOM_MEMBRANE)
                 .define('s', Tags.Items.STRING)
                 .unlockedBy("membrane'd", InventoryChangeTrigger.TriggerInstance.hasItems(Items.PHANTOM_MEMBRANE))
+                .save(consumer);
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(Items.SMOOTH_STONE), Registration.EYE_STONE.get())
+                .unlockedBy("eyeGet", InventoryChangeTrigger.TriggerInstance.hasItems(Items.ENDER_EYE))
                 .save(consumer);
     }
 }

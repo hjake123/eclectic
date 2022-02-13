@@ -31,7 +31,8 @@ public class ModBlockTags extends BlockTagsProvider{
                 .add(Registration.GLOW_SCONCE.get())
                 .add(Registration.BLAZE_SCONCE.get())
                 .add(Registration.SOUL_SCONCE.get())
-                .add(Registration.EYE_STONE.get());
+                .add(Registration.EYE_STONE.get())
+                .add(Registration.MIND_LANTERN.get());
         tag(BlockTags.NEEDS_DIAMOND_TOOL)
                 .add(Registration.WEEPING_OBSIDIAN.get())
                 .add(Registration.SOBBING_OBSIDIAN.get())
@@ -40,8 +41,6 @@ public class ModBlockTags extends BlockTagsProvider{
                 .add(Registration.DEAD_OBSIDIAN.get());
         tag(BlockTags.PIGLIN_REPELLENTS)
                 .add(Registration.RAGING_OBSIDIAN.get());
-        tag(BlockTags.SOUL_SPEED_BLOCKS)
-                .add(Registration.MOURNING_OBSIDIAN.get());
         tag(BlockTags.STRIDER_WARM_BLOCKS)
                 .add(Registration.RAGING_OBSIDIAN.get());
         tag(BlockTags.HOGLIN_REPELLENTS)

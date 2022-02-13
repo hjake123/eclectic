@@ -1,0 +1,34 @@
+{
+  "parent": "minecraft:recipes/root",
+  "rewards": {
+    "recipes": [
+      "eclectic:mind_lantern"
+    ]
+  },
+  "criteria": {
+    "membrane\u0027d": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          {
+            "items": [
+              "minecraft:phantom_membrane"
+            ]
+          }
+        ]
+      }
+    },
+    "has_the_recipe": {
+      "trigger": "minecraft:recipe_unlocked",
+      "conditions": {
+        "recipe": "eclectic:mind_lantern"
+      }
+    }
+  },
+  "requirements": [
+    [
+      "membrane\u0027d",
+      "has_the_recipe"
+    ]
+  ]
+}

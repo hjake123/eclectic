@@ -1,6 +1,6 @@
 {
-  "parent": "minecraft:block/template_lantern",
+  "parent": "minecraft:item/generated",
   "textures": {
-    "lantern": "eclectic:block/mind_lantern"
+    "layer0": "eclectic:item/mind_lantern"
   }
 }

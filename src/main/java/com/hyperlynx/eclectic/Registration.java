@@ -73,29 +73,30 @@ public class Registration {
             () -> new SconceBlock(BlockBehaviour.Properties.of(Material.AMETHYST)
                     .strength(1.0F)
                     .noOcclusion()
-                    .lightLevel((BlockState bs) -> 3)));
+                    .lightLevel((BlockState bs) -> 3)
+                    .sound(SoundType.AMETHYST)));
     public static final RegistryObject<Item> SCONCE_ITEM = fromBlock(SCONCE, CreativeModeTab.TAB_DECORATIONS);
 
     public static final RegistryObject<Block> GLOW_SCONCE = BLOCKS.register("glow_sconce",
             () -> new SconceBlock(BlockBehaviour.Properties.of(Material.AMETHYST)
                     .strength(1.0F)
                     .noOcclusion()
-                    .lightLevel((BlockState bs) -> 15)));
-    public static final RegistryObject<Item> GLOW_SCONCE_ITEM = fromBlock(GLOW_SCONCE);
+                    .lightLevel((BlockState bs) -> 15)
+                    .sound(SoundType.AMETHYST)));
 
     public static final RegistryObject<Block> BLAZE_SCONCE = BLOCKS.register("blaze_sconce",
             () -> new FlareSconceBlock(BlockBehaviour.Properties.of(Material.AMETHYST)
                     .strength(1.0F)
                     .noOcclusion()
-                    .lightLevel((BlockState bs) -> 7),ParticleTypes.FLAME));
-    public static final RegistryObject<Item> BLAZE_SCONCE_ITEM = fromBlock(BLAZE_SCONCE);
+                    .lightLevel((BlockState bs) -> 7)
+                    .sound(SoundType.AMETHYST),ParticleTypes.FLAME));
 
     public static final RegistryObject<Block> SOUL_SCONCE = BLOCKS.register("soul_sconce",
             () -> new FlareSconceBlock(BlockBehaviour.Properties.of(Material.AMETHYST)
                     .strength(1.0F)
                     .noOcclusion()
-                    .lightLevel((BlockState bs) -> 6),ParticleTypes.SOUL_FIRE_FLAME));
-    public static final RegistryObject<Item> SOUL_SCONCE_ITEM = fromBlock(SOUL_SCONCE);
+                    .lightLevel((BlockState bs) -> 6)
+                    .sound(SoundType.AMETHYST),ParticleTypes.SOUL_FIRE_FLAME));
 
     public static final RegistryObject<Block> PHANTOM_QUILT = BLOCKS.register("phantom_quilt",
             () -> new PhantomQuiltBlock(BlockBehaviour.Properties.of(Material.CLOTH_DECORATION)
@@ -105,12 +106,15 @@ public class Registration {
 
     public static final RegistryObject<Block> EYE_STONE = BLOCKS.register("eye_stone",
             () -> new Block(BlockBehaviour.Properties.of(Material.STONE)
+                    .strength(1.0F)
                     .requiresCorrectToolForDrops()));
     public static final RegistryObject<Item> EYE_STONE_ITEM = fromBlock(EYE_STONE, CreativeModeTab.TAB_BUILDING_BLOCKS);
 
     public static final RegistryObject<Block> MIND_LANTERN = BLOCKS.register("mind_lantern",
             () -> new MindLanternBlock(BlockBehaviour.Properties.of(Material.HEAVY_METAL)
-                    .requiresCorrectToolForDrops()));
+                    .strength(0.5F)
+                    .requiresCorrectToolForDrops()
+                    .sound(SoundType.LANTERN)));
     public static final RegistryObject<Item> MIND_LANTERN_ITEM = fromBlock(MIND_LANTERN, CreativeModeTab.TAB_DECORATIONS);
 
     // Helper method for BlockItem registration

@@ -8,6 +8,7 @@ import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -65,9 +66,14 @@ public class MindLanternBlock extends LanternBlock {
     @Override
     public @NotNull InteractionResult use(@NotNull BlockState state, @NotNull Level level, @NotNull BlockPos pos, @NotNull Player player, @NotNull InteractionHand hand, @NotNull BlockHitResult hit) {
         if(!level.isClientSide()) {
-            ServerStatsCounter serverstatscounter = ((ServerPlayer) player).getStats();
-            LOGGER.info(serverstatscounter.getValue(Stats.CUSTOM.get(Stats.TIME_SINCE_REST)));
-            level.setBlock(pos, state.setValue(ON, playerHasInsomnia(player)), 2);
+            if(player.getItemInHand(hand).is(Items.ENDER_EYE) && !level.dimension().equals(Level.NETHER)){
+                level.setBlock(pos, state.setValue(ON, true), 2);
+                return InteractionResult.CONSUME;
+            }
+            if(!level.dimension().equals(Level.NETHER) && !level.dimension().equals(Level.END)){
+                ServerStatsCounter serverstatscounter = ((ServerPlayer) player).getStats();
+                level.setBlock(pos, state.setValue(ON, playerHasInsomnia(player)), 2);
+            }
         }
         return InteractionResult.SUCCESS;
     }

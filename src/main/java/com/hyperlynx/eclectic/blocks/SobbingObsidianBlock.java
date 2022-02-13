@@ -42,7 +42,7 @@ public class SobbingObsidianBlock extends Block {
 
     @Override
     public void randomTick(@NotNull BlockState state, @NotNull ServerLevel level, @NotNull BlockPos pos, @NotNull Random random){
-        if(!level.isRaining() && level.canSeeSky(pos.above())){
+        if(!level.isRaining() && level.canSeeSky(pos.above()) && level.isDay()){
             level.setBlock(pos, Registration.WEEPING_OBSIDIAN.get().defaultBlockState(), 2);
         }
     }

@@ -59,5 +59,10 @@ public class ModRecipes extends RecipeProvider {
         SingleItemRecipeBuilder.stonecutting(Ingredient.of(Items.SMOOTH_STONE), Registration.EYE_STONE.get())
                 .unlockedBy("eyeGet", InventoryChangeTrigger.TriggerInstance.hasItems(Items.ENDER_EYE))
                 .save(consumer);
+        ShapelessRecipeBuilder.shapeless(Registration.MIND_LANTERN_ITEM.get())
+                .requires(Items.SOUL_LANTERN)
+                .requires(Items.PHANTOM_MEMBRANE)
+                .unlockedBy("membrane'd", InventoryChangeTrigger.TriggerInstance.hasItems(Items.PHANTOM_MEMBRANE))
+                .save(consumer);
     }
 }

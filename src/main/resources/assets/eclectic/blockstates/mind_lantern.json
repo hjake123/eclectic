@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "hanging=false,on=false": {
+      "model": "eclectic:block/mind_lantern"
+    },
+    "hanging=true,on=false": {
+      "model": "eclectic:block/mind_lantern_hanging"
+    },
+    "hanging=false,on=true": {
+      "model": "eclectic:block/mind_lantern_on"
+    },
+    "hanging=true,on=true": {
+      "model": "eclectic:block/mind_lantern_on_hanging"
+    }
+  }
+}

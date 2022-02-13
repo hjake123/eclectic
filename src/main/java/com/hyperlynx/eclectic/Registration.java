@@ -8,6 +8,7 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.LanternBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
@@ -106,6 +107,11 @@ public class Registration {
             () -> new Block(BlockBehaviour.Properties.of(Material.STONE)
                     .requiresCorrectToolForDrops()));
     public static final RegistryObject<Item> EYE_STONE_ITEM = fromBlock(EYE_STONE, CreativeModeTab.TAB_BUILDING_BLOCKS);
+
+    public static final RegistryObject<Block> MIND_LANTERN = BLOCKS.register("mind_lantern",
+            () -> new MindLanternBlock(BlockBehaviour.Properties.of(Material.HEAVY_METAL)
+                    .requiresCorrectToolForDrops()));
+    public static final RegistryObject<Item> MIND_LANTERN_ITEM = fromBlock(MIND_LANTERN, CreativeModeTab.TAB_DECORATIONS);
 
     // Helper method for BlockItem registration
     public static <B extends Block> RegistryObject<Item> fromBlock(RegistryObject<B> block, CreativeModeTab tab) {

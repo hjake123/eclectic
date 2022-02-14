@@ -35,7 +35,7 @@ public class JEIPlugin implements IModPlugin {
         registration.addIngredientInfo(new ItemStack(Registration.PHANTOM_QUILT_ITEM.get()), VanillaTypes.ITEM,
                 Component.nullToEmpty("A floating quilt that breaks any fall. If you fall while one is in your inventory, it will deploy beneath you automatically."));
         registration.addIngredientInfo(new ItemStack(Registration.SCONCE_ITEM.get()), VanillaTypes.ITEM,
-                Component.nullToEmpty("A decorative sconce. By applying different items, it changes. These items can be used: \n\nGlowstone Dust\nBlaze Powder\nSoul Soil"));
+                Component.nullToEmpty("A decorative sconce. By applying different items, it changes form. These items can be used: \n\nAmethyst Shard\nGlowstone Dust\nBlaze Powder\nSoul Soil"));
         registration.addIngredientInfo(new ItemStack(Registration.MIND_LANTERN_ITEM.get()), VanillaTypes.ITEM,
                 Component.nullToEmpty("A psychic lantern. If touched by one who might soon fall prey to insomnia, it will glow green.\n\nAn Eye of Ender can be used to activate it freely."));
 

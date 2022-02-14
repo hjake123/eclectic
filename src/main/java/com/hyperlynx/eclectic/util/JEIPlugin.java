@@ -23,7 +23,7 @@ public class JEIPlugin implements IModPlugin {
     public void registerRecipes(@NotNull IRecipeRegistration registration) {
         IModPlugin.super.registerRecipes(registration);
         registration.addIngredientInfo(new ItemStack(Registration.WEEPING_OBSIDIAN_ITEM.get()), VanillaTypes.ITEM,
-                Component.nullToEmpty("Crying Obsidian whose true emotions have been unlocked. Exposing it to the elements might further change its emotional state..."));
+                Component.nullToEmpty("Crying Obsidian whose true emotions have been unlocked. Exposing it to a harsh environment might further change its emotional state..."));
         registration.addIngredientInfo(new ItemStack(Registration.SOBBING_OBSIDIAN_ITEM.get()), VanillaTypes.ITEM,
                 Component.nullToEmpty("The rain has dampened its mood. Best to let it dry out in the sun."));
         registration.addIngredientInfo(new ItemStack(Registration.RAGING_OBSIDIAN_ITEM.get()), VanillaTypes.ITEM,

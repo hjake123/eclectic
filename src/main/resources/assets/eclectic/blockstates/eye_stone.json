@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "closed=false": {
+      "model": "eclectic:block/eye_stone"
+    },
+    "closed=true": {
+      "model": "eclectic:block/eye_stone_closed"
+    }
+  }
+}

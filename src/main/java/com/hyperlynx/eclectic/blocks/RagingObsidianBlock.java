@@ -1,6 +1,7 @@
 package com.hyperlynx.eclectic.blocks;
 
 import com.hyperlynx.eclectic.Registration;
+import com.hyperlynx.eclectic.util.ConfigMan;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
@@ -34,8 +35,9 @@ public class RagingObsidianBlock extends Block {
     @Override
     public void randomTick(@NotNull BlockState state, @NotNull ServerLevel level, @NotNull BlockPos pos, @NotNull Random random){
         Vec3 center = Vec3.atCenterOf(pos);
-        if(level.dimensionType().ultraWarm()) {
-            List<Entity> nearby_entities = level.getEntities(null, AABB.ofSize(center, 5, 5, 5));
+        if(level.dimensionType().ultraWarm() && ConfigMan.COMMON.ragingBurning.get()) {
+            int scale = ConfigMan.COMMON.rageRange.get();
+            List<Entity> nearby_entities = level.getEntities(null, AABB.ofSize(center, scale, scale, scale));
             for (Entity nearby_entity : nearby_entities) {
                 if (!nearby_entity.fireImmune()) {
                     nearby_entity.setSecondsOnFire(5);

@@ -105,7 +105,7 @@ public class Registration {
             () -> new PhantomQuiltItem(new Item.Properties().tab(CreativeModeTab.TAB_DECORATIONS).stacksTo(1)));
 
     public static final RegistryObject<Block> EYE_STONE = BLOCKS.register("eye_stone",
-            () -> new Block(BlockBehaviour.Properties.of(Material.STONE)
+            () -> new EyeStoneBlock(BlockBehaviour.Properties.of(Material.STONE)
                     .strength(1.0F)
                     .requiresCorrectToolForDrops()));
     public static final RegistryObject<Item> EYE_STONE_ITEM = fromBlock(EYE_STONE, CreativeModeTab.TAB_BUILDING_BLOCKS);

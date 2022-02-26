@@ -1,6 +1,7 @@
 package com.hyperlynx.eclectic.blocks;
 
 import com.hyperlynx.eclectic.Registration;
+import com.hyperlynx.eclectic.util.ConfigMan;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
@@ -29,12 +30,15 @@ public class MourningObsidianBlock extends Block {
 
     @Override
     public void stepOn(@NotNull Level level, @NotNull BlockPos pos, @NotNull BlockState state, @NotNull Entity entity) {
-        int x = pos.getX() + level.getRandom().nextInt(20) - 10;
-        int y = pos.getY() + level.getRandom().nextInt(10);
-        int z = pos.getZ() + level.getRandom().nextInt(20) - 10;
-        BlockPos tpPos = new BlockPos(x, y, z);
-        if(level.isEmptyBlock(tpPos.above()))
-            entity.teleportTo(x, y, z);
+        if(ConfigMan.COMMON.mourningTP.get()) {
+            int range = ConfigMan.COMMON.mourningRange.get();
+            int x = pos.getX() + level.getRandom().nextInt(2*range) - range;
+            int y = pos.getY() + level.getRandom().nextInt(range);
+            int z = pos.getZ() + level.getRandom().nextInt(2*range) - range;
+            BlockPos tpPos = new BlockPos(x, y, z);
+            if (level.isEmptyBlock(tpPos.above()))
+                entity.teleportTo(x, y, z);
+        }
     }
 
     @Override

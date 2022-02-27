@@ -11,5 +11,8 @@
   "block.eclectic.sobbing_obsidian": "Sobbing Obsidian",
   "block.eclectic.soul_sconce": "Soulful Sconce",
   "block.eclectic.weeping_obsidian": "Weeping Obsidian",
-  "item.eclectic.pointer": "Pointer"
+  "item.eclectic.pointer": "Pointer",
+  "item.eclectic.trapdoor_hammer": "Trapdoor Hammer",
+  "message.eclectic.trapdoor.lock": "Locked",
+  "message.eclectic.trapdoor.unlock": "Unlocked"
 }

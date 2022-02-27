@@ -3,7 +3,6 @@ package com.hyperlynx.eclectic.datagen;
 import com.hyperlynx.eclectic.EclecticMod;
 import com.hyperlynx.eclectic.Registration;
 import net.minecraft.data.DataGenerator;
-import net.minecraft.data.DataProvider;
 import net.minecraftforge.common.data.LanguageProvider;
 
 public class ModLanguageProvider extends LanguageProvider {
@@ -27,5 +26,8 @@ public class ModLanguageProvider extends LanguageProvider {
         add(Registration.PHANTOM_QUILT.get(), "Phantom Quilt");
         add(Registration.EYE_STONE.get(), "Observant Stone");
         add(Registration.MIND_LANTERN.get(), "Mind Lantern");
+        add(Registration.HAMMER_ITEM.get(), "Trapdoor Hammer");
+        add("message.eclectic.trapdoor.unlock", "Unstuck");
+        add("message.eclectic.trapdoor.lock", "Stuck");
     }
 }

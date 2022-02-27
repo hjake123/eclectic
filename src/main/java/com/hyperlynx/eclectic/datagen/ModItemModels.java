@@ -13,7 +13,7 @@ public class ModItemModels extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
-        // Pointer and Sconce models are custom.
+        // Non-block based item models are custom.
         withExistingParent(Registration.WEEPING_OBSIDIAN.get().getRegistryName().getPath(), modLoc("block/weeping_obsidian"));
         withExistingParent(Registration.SOBBING_OBSIDIAN.get().getRegistryName().getPath(), modLoc("block/sobbing_obsidian"));
         withExistingParent(Registration.RAGING_OBSIDIAN.get().getRegistryName().getPath(), modLoc("block/raging_obsidian"));

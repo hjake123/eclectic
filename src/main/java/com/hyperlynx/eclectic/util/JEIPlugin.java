@@ -38,6 +38,9 @@ public class JEIPlugin implements IModPlugin {
                 Component.nullToEmpty("A decorative sconce. By applying different items, it changes form. These items can be used: \n\nAmethyst Shard\nGlowstone Dust\nBlaze Powder\nSoul Soil"));
         registration.addIngredientInfo(new ItemStack(Registration.MIND_LANTERN_ITEM.get()), VanillaTypes.ITEM,
                 Component.nullToEmpty("A psychic lantern. If touched by one who might soon fall prey to insomnia, it will glow green.\n\nAn Eye of Ender can be used to activate it freely."));
+        registration.addIngredientInfo(new ItemStack(Registration.HAMMER_ITEM.get()), VanillaTypes.ITEM,
+                Component.nullToEmpty("This hammer can be used to force trapdoors to remain in place, or to free them."));
+
 
     }
 }

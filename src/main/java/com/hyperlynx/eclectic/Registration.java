@@ -8,7 +8,6 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.LanternBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
@@ -116,6 +115,9 @@ public class Registration {
                     .requiresCorrectToolForDrops()
                     .sound(SoundType.LANTERN)));
     public static final RegistryObject<Item> MIND_LANTERN_ITEM = fromBlock(MIND_LANTERN, CreativeModeTab.TAB_DECORATIONS);
+
+    public static final RegistryObject<Item> HAMMER_ITEM = ITEMS.register("trapdoor_hammer",
+            () -> new Item(new Item.Properties().stacksTo(1).tab(CreativeModeTab.TAB_TOOLS)));
 
     // Helper method for BlockItem registration
     public static <B extends Block> RegistryObject<Item> fromBlock(RegistryObject<B> block, CreativeModeTab tab) {

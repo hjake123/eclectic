@@ -64,5 +64,13 @@ public class ModRecipes extends RecipeProvider {
                 .requires(Items.PHANTOM_MEMBRANE)
                 .unlockedBy("membrane'd", InventoryChangeTrigger.TriggerInstance.hasItems(Items.PHANTOM_MEMBRANE))
                 .save(consumer);
+        ShapedRecipeBuilder.shaped(Registration.HAMMER_ITEM.get())
+                .pattern(" ii")
+                .pattern(" ci")
+                .pattern("c  ")
+                .define('i', Tags.Items.INGOTS_IRON)
+                .define('c', Tags.Items.INGOTS_COPPER)
+                .unlockedBy("ironic", InventoryChangeTrigger.TriggerInstance.hasItems(Items.IRON_INGOT))
+                .save(consumer);
     }
 }

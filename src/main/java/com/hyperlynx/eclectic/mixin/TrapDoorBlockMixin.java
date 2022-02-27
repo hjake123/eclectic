@@ -4,6 +4,7 @@ package com.hyperlynx.eclectic.mixin;
 
 import com.hyperlynx.eclectic.Registration;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
@@ -13,22 +14,37 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.TrapDoorBlock;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.level.block.state.properties.Half;
 import net.minecraft.world.phys.BlockHitResult;
-import org.lwjgl.system.CallbackI;
+import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Overwrite;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
+import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(TrapDoorBlock.class)
-public abstract class TrapDoorBlockMixin {
+public abstract class TrapDoorBlockMixin extends Block {
     private static final BooleanProperty LOCKED = BlockStateProperties.LOCKED;
+
+    public TrapDoorBlockMixin(Properties p_57526_) {
+        super(p_57526_); // Dummy constructor
+    }
+
+    @Inject(method = "<init>", at = @At("RETURN"))
+    protected void TrapDoorBlock(BlockBehaviour.Properties p_57526_, CallbackInfo ci) {
+        this.registerDefaultState(this.defaultBlockState().setValue(LOCKED, false));
+    }
 
     @Inject(method = "createBlockStateDefinition", at = @At("RETURN"))
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> pBuilder, CallbackInfo ci) {

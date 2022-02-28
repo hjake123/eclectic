@@ -5,14 +5,16 @@
   "block.eclectic.glow_sconce": "Glowing Sconce",
   "block.eclectic.mind_lantern": "Mind Lantern",
   "block.eclectic.mourning_obsidian": "Mourning Obsidian",
+  "block.eclectic.moving_obsidian": "Wandering Obsidian",
   "block.eclectic.phantom_quilt": "Phantom Quilt",
   "block.eclectic.raging_obsidian": "Raging Obsidian",
   "block.eclectic.sconce": "Amethyst Sconce",
   "block.eclectic.sobbing_obsidian": "Sobbing Obsidian",
   "block.eclectic.soul_sconce": "Soulful Sconce",
+  "block.eclectic.weak_redstone": "Blasted Redstone Block",
   "block.eclectic.weeping_obsidian": "Weeping Obsidian",
   "item.eclectic.pointer": "Pointer",
   "item.eclectic.trapdoor_hammer": "Trapdoor Hammer",
-  "message.eclectic.trapdoor.lock": "Locked",
-  "message.eclectic.trapdoor.unlock": "Unlocked"
+  "message.eclectic.trapdoor.lock": "Stuck",
+  "message.eclectic.trapdoor.unlock": "Unstuck"
 }

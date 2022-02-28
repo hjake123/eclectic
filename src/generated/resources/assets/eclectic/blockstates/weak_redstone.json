@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "eclectic:block/weak_redstone"
+    }
+  }
+}

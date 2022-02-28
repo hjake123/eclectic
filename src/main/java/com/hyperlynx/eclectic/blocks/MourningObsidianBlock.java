@@ -46,10 +46,13 @@ public class MourningObsidianBlock extends Block {
         return true;
     }
 
+    @SuppressWarnings("deprecation")
     @Override
     public void randomTick(@NotNull BlockState state, @NotNull ServerLevel level, @NotNull BlockPos pos, @NotNull Random random){
         if(!level.isRaining() && level.canSeeSky(pos.above()) && level.isDay() && level.random.nextFloat() < 0.1){
             level.setBlock(pos, Blocks.OBSIDIAN.defaultBlockState(), 2);
+        }else if(level.dimension().equals(Level.NETHER)){
+            level.setBlock(pos, Registration.MOVING_OBSIDIAN.get().defaultBlockState(), 2);
         }
     }
 

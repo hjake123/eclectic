@@ -24,5 +24,7 @@ public class ModLootTables extends BaseLootTableProvider{
         lootTables.put(Registration.PHANTOM_QUILT.get(), createSimpleTable("quilt", Registration.PHANTOM_QUILT.get()));
         lootTables.put(Registration.EYE_STONE.get(), createSimpleTable("eye_stone", Registration.EYE_STONE.get()));
         lootTables.put(Registration.MIND_LANTERN.get(), createSimpleTable("mind_lantern", Registration.MIND_LANTERN.get()));
+        lootTables.put(Registration.WEAK_REDSTONE.get(), createSimpleTable("weak_redstone", Registration.WEAK_REDSTONE.get()));
+        lootTables.put(Registration.MOVING_OBSIDIAN.get(), createSimpleTable("moving_obsidian", Registration.MOVING_OBSIDIAN.get()));
     }
 }

@@ -27,9 +27,11 @@ public class JEIPlugin implements IModPlugin {
         registration.addIngredientInfo(new ItemStack(Registration.SOBBING_OBSIDIAN_ITEM.get()), VanillaTypes.ITEM,
                 Component.nullToEmpty("The rain has dampened its mood. Best to let it dry out in the sun."));
         registration.addIngredientInfo(new ItemStack(Registration.RAGING_OBSIDIAN_ITEM.get()), VanillaTypes.ITEM,
-                Component.nullToEmpty("What was quiet sorrow has changed to burning resentment. Perhaps a deep void would help it to relax?"));
+                Component.nullToEmpty("What was quiet sorrow has changed to burning resentment. Perhaps a deep void would help it calm down."));
         registration.addIngredientInfo(new ItemStack(Registration.MOURNING_OBSIDIAN_ITEM.get()), VanillaTypes.ITEM,
                 Component.nullToEmpty("The fires of rage have given way to grief. Maybe the light of the sun will allow it to finally heal."));
+        registration.addIngredientInfo(new ItemStack(Registration.MOVING_OBSIDIAN_ITEM.get()), VanillaTypes.ITEM,
+                Component.nullToEmpty("Mournful grief is set to motion by a place filled with spirits. It wanders aimlessly through unobstructed spaces. Return it to the void to let it rest."));
         registration.addIngredientInfo(new ItemStack(Registration.DEAD_OBSIDIAN_ITEM.get()), VanillaTypes.ITEM,
                 Component.nullToEmpty("It's gone."));
         registration.addIngredientInfo(new ItemStack(Registration.PHANTOM_QUILT_ITEM.get()), VanillaTypes.ITEM,

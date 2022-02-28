@@ -3,15 +3,20 @@ package com.hyperlynx.eclectic;
 import com.hyperlynx.eclectic.blocks.*;
 import com.hyperlynx.eclectic.items.PhantomQuiltItem;
 import com.hyperlynx.eclectic.items.Pointer;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.color.block.BlockColors;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.RedStoneWireBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Material;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
@@ -26,6 +31,14 @@ public class Registration {
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
         BLOCKS.register(bus);
         ITEMS.register(bus);
+    }
+
+    // For Weak Redstone's color property.
+    @OnlyIn(Dist.CLIENT)
+    public static void loadCompleteClient(){
+        Minecraft mc = Minecraft.getInstance();
+        BlockColors bc = mc.getBlockColors();
+        bc.register(WeakRedstoneBlock.getColor(), WEAK_REDSTONE.get());
     }
 
     public static final RegistryObject<Item> POINTER_ITEM = ITEMS.register("pointer",
@@ -59,6 +72,13 @@ public class Registration {
                     .strength(10.0F, 50.0F)
                     .lightLevel((BlockState bs) -> 0)));
     public static final RegistryObject<Item> MOURNING_OBSIDIAN_ITEM = fromBlock(MOURNING_OBSIDIAN, CreativeModeTab.TAB_BUILDING_BLOCKS);
+
+    public static final RegistryObject<Block> MOVING_OBSIDIAN = BLOCKS.register("moving_obsidian",
+            () -> new MovingObsidianBlock(BlockBehaviour.Properties.of(Material.STONE)
+                    .requiresCorrectToolForDrops()
+                    .strength(10.0F, 50.0F)
+                    .lightLevel((BlockState bs) -> 0)));
+    public static final RegistryObject<Item> MOVING_OBSIDIAN_ITEM = fromBlock(MOVING_OBSIDIAN, CreativeModeTab.TAB_BUILDING_BLOCKS);
 
     public static final RegistryObject<Block> DEAD_OBSIDIAN = BLOCKS.register("depleted_obsidian",
             () -> new Block(BlockBehaviour.Properties.of(Material.STONE)
@@ -118,6 +138,12 @@ public class Registration {
 
     public static final RegistryObject<Item> HAMMER_ITEM = ITEMS.register("trapdoor_hammer",
             () -> new Item(new Item.Properties().stacksTo(1).tab(CreativeModeTab.TAB_TOOLS)));
+
+    public static final RegistryObject<Block> WEAK_REDSTONE = BLOCKS.register("weak_redstone",
+            () -> new WeakRedstoneBlock(BlockBehaviour.Properties.of(Material.STONE)
+                    .strength(0.5F)
+                    .requiresCorrectToolForDrops()));
+    public static final RegistryObject<Item> WEAK_REDSTONE_ITEM = fromBlock(WEAK_REDSTONE, CreativeModeTab.TAB_REDSTONE);
 
     // Helper method for BlockItem registration
     public static <B extends Block> RegistryObject<Item> fromBlock(RegistryObject<B> block, CreativeModeTab tab) {

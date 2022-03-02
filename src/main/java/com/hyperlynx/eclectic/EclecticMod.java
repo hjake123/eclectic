@@ -28,7 +28,7 @@ public class EclecticMod
 
     @SubscribeEvent
     public void loadComplete(FMLLoadCompleteEvent event) {
-        DistExecutor.safeRunWhenOn(Dist.CLIENT, () -> Registration::loadCompleteClient);
+        DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> Registration::loadCompleteClient);
     }
 
 }

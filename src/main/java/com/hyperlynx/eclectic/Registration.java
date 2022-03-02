@@ -1,11 +1,15 @@
 package com.hyperlynx.eclectic;
 
 import com.hyperlynx.eclectic.blocks.*;
+import com.hyperlynx.eclectic.fx.LaserParticle;
 import com.hyperlynx.eclectic.items.PhantomQuiltItem;
 import com.hyperlynx.eclectic.items.Pointer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.color.block.BlockColors;
+import net.minecraft.client.particle.SpriteSet;
+import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
@@ -17,7 +21,10 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Material;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.client.event.ParticleFactoryRegisterEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -26,11 +33,16 @@ import net.minecraftforge.registries.RegistryObject;
 public class Registration {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, EclecticMod.MODID);
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, EclecticMod.MODID);
+    public static final DeferredRegister<ParticleType<?>> PARTICLES = DeferredRegister.create(ForgeRegistries.PARTICLE_TYPES, EclecticMod.MODID);
 
     public static void init() {
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
         BLOCKS.register(bus);
         ITEMS.register(bus);
+        DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> {
+            PARTICLES.register(bus);
+            bus.register(Registration.class);
+        });
     }
 
     // For Weak Redstone's color property.
@@ -145,6 +157,10 @@ public class Registration {
                     .requiresCorrectToolForDrops()));
     public static final RegistryObject<Item> WEAK_REDSTONE_ITEM = fromBlock(WEAK_REDSTONE, CreativeModeTab.TAB_REDSTONE);
 
+    public static final SimpleParticleType LASER_PARTICLE = new SimpleParticleType(false);
+    public static final RegistryObject<ParticleType<SimpleParticleType>> LASER_PARTICLE_TYPE = PARTICLES.register("laser",
+            () -> LASER_PARTICLE);
+
     // Helper method for BlockItem registration
     public static <B extends Block> RegistryObject<Item> fromBlock(RegistryObject<B> block, CreativeModeTab tab) {
         return ITEMS.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));
@@ -153,5 +169,10 @@ public class Registration {
     // Helper method for BlockItem registration without a tab
     public static <B extends Block> RegistryObject<Item> fromBlock(RegistryObject<B> block) {
         return ITEMS.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties()));
+    }
+
+    @SubscribeEvent
+    public static void registerParticles(ParticleFactoryRegisterEvent evt) {
+        Minecraft.getInstance().particleEngine.register(LASER_PARTICLE_TYPE.get(), LaserParticle::new);
     }
 }

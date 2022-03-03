@@ -6,7 +6,6 @@ import com.hyperlynx.eclectic.items.PhantomQuiltItem;
 import com.hyperlynx.eclectic.items.Pointer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.color.block.BlockColors;
-import net.minecraft.client.particle.SpriteSet;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.particles.SimpleParticleType;
@@ -14,7 +13,6 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.RedStoneWireBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
@@ -39,8 +37,8 @@ public class Registration {
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
         BLOCKS.register(bus);
         ITEMS.register(bus);
+        PARTICLES.register(bus);
         DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> {
-            PARTICLES.register(bus);
             bus.register(Registration.class);
         });
     }
@@ -173,6 +171,6 @@ public class Registration {
 
     @SubscribeEvent
     public static void registerParticles(ParticleFactoryRegisterEvent evt) {
-        Minecraft.getInstance().particleEngine.register(LASER_PARTICLE_TYPE.get(), LaserParticle::new);
+        Minecraft.getInstance().particleEngine.register(LASER_PARTICLE_TYPE.get(), LaserParticle.LaserParticleProvider::new);
     }
 }

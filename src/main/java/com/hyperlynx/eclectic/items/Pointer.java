@@ -1,15 +1,9 @@
 package com.hyperlynx.eclectic.items;
 
 import com.hyperlynx.eclectic.Registration;
-import com.hyperlynx.eclectic.fx.LaserParticle;
 import com.hyperlynx.eclectic.util.Helper;
-import com.mojang.math.Vector3f;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.particle.ParticleEngine;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.commands.arguments.EntityAnchorArgument;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
@@ -17,10 +11,8 @@ import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.PathfinderMob;
-import net.minecraft.world.entity.ai.goal.MoveToBlockGoal;
 import net.minecraft.world.entity.animal.Cat;
 import net.minecraft.world.entity.animal.Ocelot;
 import net.minecraft.world.entity.player.Player;
@@ -30,9 +22,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 
@@ -61,7 +51,7 @@ public class Pointer extends Item {
             var start = player.getEyePosition();
             var end = start.add(player.getLookAngle().scale(RANGE));
             var entityHit = ProjectileUtil.getEntityHitResult(
-                player, start, end, new AABB(start, end), e -> e instanceof LivingEntity, RANGE
+                player, start, end, new AABB(start, end), e -> e instanceof LivingEntity, Double.MAX_VALUE
             );
             // Check which is closer
             Vec3 laserPos;
@@ -74,9 +64,9 @@ public class Pointer extends Item {
             }
 
             if (user instanceof LocalPlayer) {
-                level.addParticle(Registration.LASER_PARTICLE,
-                    laserPos.x,laserPos.y, laserPos.z,
-                    0, 0, 0);
+                for (int i = 0; i < 5; i++) {
+                    level.addParticle(Registration.LASER_PARTICLE, laserPos.x,laserPos.y, laserPos.z, 0, 0, 0);
+                }
             } else if (user instanceof ServerPlayer splayer) {
                 if (entityHit != null) {
                     var target = (LivingEntity) entityHit.getEntity();

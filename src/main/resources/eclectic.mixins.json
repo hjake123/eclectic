@@ -7,9 +7,6 @@
   "mixins": [
     "TrapDoorBlockMixin"
   ],
-  "client": [
-    "client.GlowParticleAccessor"
-  ],
   "injectors": {
     "defaultRequire": 1
   }

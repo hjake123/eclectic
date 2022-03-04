@@ -7,9 +7,6 @@
   "mixins": [
     "TrapDoorBlockMixin"
   ],
-  "client": [
-
-  ],
   "injectors": {
     "defaultRequire": 1
   }

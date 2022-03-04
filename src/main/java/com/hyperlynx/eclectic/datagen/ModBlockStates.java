@@ -19,6 +19,5 @@ public class ModBlockStates extends BlockStateProvider {
         simpleBlock(Registration.MOURNING_OBSIDIAN.get());
         simpleBlock(Registration.DEAD_OBSIDIAN.get());
         simpleBlock(Registration.MOVING_OBSIDIAN.get());
-        simpleBlock(Registration.WEAK_REDSTONE.get());
     }
 }

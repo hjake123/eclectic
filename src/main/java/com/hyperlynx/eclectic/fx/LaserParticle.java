@@ -3,6 +3,7 @@ package com.hyperlynx.eclectic.fx;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.*;
 import net.minecraft.core.particles.SimpleParticleType;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.lang.reflect.Constructor;
@@ -18,7 +19,7 @@ public class LaserParticle extends TextureSheetParticle {
 
         this.friction = 0.96F;
         this.speedUpWhenYMotionIsBlocked = true;
-        this.quadSize *= 0.2F;
+        this.quadSize *= 0.25F;
         this.hasPhysics = false;
         this.setSpriteFromAge(pSprites);
     }
@@ -32,10 +33,11 @@ public class LaserParticle extends TextureSheetParticle {
     public void tick() {
         super.tick();
         this.setSpriteFromAge(this.sprites);
-        this.setAlpha(1f - ((float) this.age / (float) this.lifetime));
+        this.setSize(1f - ((float) this.age / (float) this.lifetime), 1f - ((float) this.age / (float) this.lifetime));
     }
 
     @Override
+    @NotNull
     public ParticleRenderType getRenderType() {
         return ParticleRenderType.PARTICLE_SHEET_TRANSLUCENT;
     }
@@ -49,14 +51,16 @@ public class LaserParticle extends TextureSheetParticle {
 
         @Nullable
         @Override
-        public Particle createParticle(SimpleParticleType pType, ClientLevel pLevel, double pX, double pY, double pZ,
-            double pXSpeed, double pYSpeed, double pZSpeed) {
+        public Particle createParticle(@NotNull SimpleParticleType pType, @NotNull ClientLevel pLevel, double pX, double pY, double pZ,
+                                       double pXSpeed, double pYSpeed, double pZSpeed) {
             var particle = new LaserParticle(pLevel, pX, pY, pZ, 0d, 0d, 0d, this.sprite);
             particle.setColor(1f, 0.2f, 0.2f);
-            particle.setParticleSpeed(
-                (RANDOM.nextDouble() - 0.5) * 0.02,
-                (RANDOM.nextDouble() - 0.5) * 0.02,
-                (RANDOM.nextDouble() - 0.5) * 0.02);
+            if(RANDOM.nextFloat() < 0.03f){
+                particle.setParticleSpeed(RANDOM.nextDouble() * 0.02d - 0.01d, RANDOM.nextDouble() * 0.02d - 0.01d, RANDOM.nextDouble() * 0.02d - 0.01d);
+
+            }else{
+                particle.setParticleSpeed(0d, 0d, 0d);
+            }
             particle.setLifetime((int)(2.0D / (RANDOM.nextDouble() * 0.8D + 0.2D)));
             return particle;
         }

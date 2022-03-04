@@ -29,7 +29,6 @@ public class ModLanguageProvider extends LanguageProvider {
         add(Registration.HAMMER_ITEM.get(), "Trapdoor Hammer");
         add("message.eclectic.trapdoor.unlock", "Unstuck");
         add("message.eclectic.trapdoor.lock", "Stuck");
-        add(Registration.WEAK_REDSTONE_ITEM.get(), "Blasted Redstone Block");
         add(Registration.MOVING_OBSIDIAN.get(), "Wandering Obsidian");
     }
 }

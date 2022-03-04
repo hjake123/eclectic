@@ -21,6 +21,5 @@ public class ModItemModels extends ItemModelProvider {
         withExistingParent(Registration.MOVING_OBSIDIAN.get().getRegistryName().getPath(), modLoc("block/moving_obsidian"));
         withExistingParent(Registration.DEAD_OBSIDIAN.get().getRegistryName().getPath(), modLoc("block/depleted_obsidian"));
         withExistingParent(Registration.EYE_STONE.get().getRegistryName().getPath(), modLoc("block/eye_stone"));
-        withExistingParent(Registration.WEAK_REDSTONE.get().getRegistryName().getPath(), modLoc("block/weak_redstone"));
     }
 }

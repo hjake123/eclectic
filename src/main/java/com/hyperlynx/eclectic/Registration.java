@@ -38,17 +38,7 @@ public class Registration {
         BLOCKS.register(bus);
         ITEMS.register(bus);
         PARTICLES.register(bus);
-        DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> {
-            bus.register(Registration.class);
-        });
-    }
-
-    // For Weak Redstone's color property.
-    @OnlyIn(Dist.CLIENT)
-    public static void loadCompleteClient(){
-        Minecraft mc = Minecraft.getInstance();
-        BlockColors bc = mc.getBlockColors();
-        bc.register(WeakRedstoneBlock.getColor(), WEAK_REDSTONE.get());
+        DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> bus.register(Registration.class));
     }
 
     public static final RegistryObject<Item> POINTER_ITEM = ITEMS.register("pointer",
@@ -148,12 +138,6 @@ public class Registration {
 
     public static final RegistryObject<Item> HAMMER_ITEM = ITEMS.register("trapdoor_hammer",
             () -> new Item(new Item.Properties().stacksTo(1).tab(CreativeModeTab.TAB_TOOLS)));
-
-    public static final RegistryObject<Block> WEAK_REDSTONE = BLOCKS.register("weak_redstone",
-            () -> new WeakRedstoneBlock(BlockBehaviour.Properties.of(Material.STONE)
-                    .strength(0.5F)
-                    .requiresCorrectToolForDrops()));
-    public static final RegistryObject<Item> WEAK_REDSTONE_ITEM = fromBlock(WEAK_REDSTONE, CreativeModeTab.TAB_REDSTONE);
 
     public static final SimpleParticleType LASER_PARTICLE = new SimpleParticleType(false);
     public static final RegistryObject<ParticleType<SimpleParticleType>> LASER_PARTICLE_TYPE = PARTICLES.register("laser",

@@ -12,9 +12,17 @@ public class ConfigMan {
         public ForgeConfigSpec.IntValue mourningRange;
         public ForgeConfigSpec.IntValue insomniaTicks;
         public ForgeConfigSpec.IntValue quiltActivateHeight;
+        public ForgeConfigSpec.BooleanValue laserBlindness;
+        public ForgeConfigSpec.IntValue laserCatRange;
+
+
         Common(ForgeConfigSpec.Builder builder){
             builder.comment("Config Settings")
                     .push("config");
+            laserBlindness = builder.comment("Shining the Pointer into an entity's eyes blinds them briefly. [Default: true]")
+                    .define("laserBlindness", true);
+            laserCatRange = builder.comment("Range that the Pointer attracts cats from. Set to 0 to disable this feature. [Default: 8]")
+                    .defineInRange("laserCatRange", 8, 0, 1024);
             parachuteQuilt = builder.comment("Phantom Quilt acts like a parachute. [Default: true]")
                     .define("parachuteQuilt", true);
             quiltActivateHeight = builder.comment("Number of blocks to fall before the Phantom Quilt opens. [Default: 8]")

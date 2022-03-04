@@ -17,6 +17,8 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.animal.Cat;
 import net.minecraft.world.entity.animal.Ocelot;
+import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
+import net.minecraft.world.entity.boss.wither.WitherBoss;
 import net.minecraft.world.entity.monster.EnderMan;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ProjectileUtil;
@@ -78,7 +80,8 @@ public class Pointer extends Item {
                     var perfectHit = targetEyes.subtract(start).normalize();
                     var hitDeltaTh = angleBetween(perfectHit, splayer.getLookAngle());
                     var targetLookDeltaTh = angleBetween(perfectHit, target.getLookAngle());
-                    if(ConfigMan.COMMON.laserBlindness.get() && !(target instanceof Ocelot || target instanceof Cat || target instanceof EnderMan)) {
+                    if(ConfigMan.COMMON.laserBlindness.get() && !(target instanceof Ocelot || target instanceof Cat
+                            || target instanceof EnderMan || target instanceof EnderDragon || target instanceof WitherBoss)) {
                         if (hitDeltaTh <= BLINDNESS_ANGLE && targetLookDeltaTh >= Mth.HALF_PI) {
                             var blindness = new MobEffectInstance(MobEffects.BLINDNESS, 5, 0);
                             target.addEffect(blindness);

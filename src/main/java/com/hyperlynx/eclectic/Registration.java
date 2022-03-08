@@ -6,6 +6,8 @@ import com.hyperlynx.eclectic.items.PhantomQuiltItem;
 import com.hyperlynx.eclectic.items.Pointer;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.color.block.BlockColors;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.particles.SimpleParticleType;
@@ -23,6 +25,7 @@ import net.minecraftforge.client.event.ParticleFactoryRegisterEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DistExecutor;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -133,7 +136,8 @@ public class Registration {
             () -> new MindLanternBlock(BlockBehaviour.Properties.of(Material.HEAVY_METAL)
                     .strength(0.5F)
                     .requiresCorrectToolForDrops()
-                    .sound(SoundType.LANTERN)));
+                    .sound(SoundType.LANTERN)
+                    .noOcclusion()));
     public static final RegistryObject<Item> MIND_LANTERN_ITEM = fromBlock(MIND_LANTERN, CreativeModeTab.TAB_DECORATIONS);
 
     public static final RegistryObject<Item> HAMMER_ITEM = ITEMS.register("trapdoor_hammer",
@@ -156,5 +160,11 @@ public class Registration {
     @SubscribeEvent
     public static void registerParticles(ParticleFactoryRegisterEvent evt) {
         Minecraft.getInstance().particleEngine.register(LASER_PARTICLE_TYPE.get(), LaserParticle.LaserParticleProvider::new);
+    }
+
+    @SubscribeEvent
+    @OnlyIn(Dist.CLIENT)
+    public static void init(final FMLClientSetupEvent event) {
+        ItemBlockRenderTypes.setRenderLayer(MIND_LANTERN.get(), RenderType.cutout());
     }
 }

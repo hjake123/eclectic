@@ -68,7 +68,7 @@ public class Pointer extends Item {
                 laserPos = blockHitPos;
             }
 
-            if (user instanceof LocalPlayer) {
+            if (level.isClientSide()) {
                 for (int i = 0; i < 5; i++) {
                     level.addParticle(Registration.LASER_PARTICLE, laserPos.x,laserPos.y, laserPos.z, 0, 0, 0);
                 }

@@ -4,13 +4,12 @@ import com.hyperlynx.eclectic.Registration;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.Random;
 
 public class MovingObsidianBlock extends Block {
     public MovingObsidianBlock(Properties props) {
@@ -24,7 +23,7 @@ public class MovingObsidianBlock extends Block {
 
     @SuppressWarnings("deprecation")
     @Override
-    public void randomTick(@NotNull BlockState state, @NotNull ServerLevel level, @NotNull BlockPos pos, @NotNull Random random){
+    public void randomTick(@NotNull BlockState state, @NotNull ServerLevel level, @NotNull BlockPos pos, @NotNull RandomSource random){
         if(level.dimension().equals(Level.END)) {
             if (level.random.nextFloat() < 0.8F) {
                 level.setBlock(pos, Registration.MOURNING_OBSIDIAN.get().defaultBlockState(), 2);

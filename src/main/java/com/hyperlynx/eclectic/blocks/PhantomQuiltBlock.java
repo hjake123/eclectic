@@ -3,6 +3,7 @@ package com.hyperlynx.eclectic.blocks;
 import com.hyperlynx.eclectic.EclecticMod;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
@@ -60,7 +61,7 @@ public class PhantomQuiltBlock extends Block {
     }
 
     @Override
-    public void tick(BlockState state, @NotNull ServerLevel level, @NotNull BlockPos pos, @NotNull Random rand) {
+    public void tick(BlockState state, @NotNull ServerLevel level, @NotNull BlockPos pos, @NotNull RandomSource rand) {
         level.setBlockAndUpdate(pos, state.setValue(WEIGHED, shouldBeWeighed(state, level, pos)));
         if(state.getValue(WEIGHED)){
             level.scheduleTick(pos, this, 10);

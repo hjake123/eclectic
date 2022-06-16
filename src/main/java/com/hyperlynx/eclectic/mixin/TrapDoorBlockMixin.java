@@ -4,8 +4,7 @@ package com.hyperlynx.eclectic.mixin;
 
 import com.hyperlynx.eclectic.Registration;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
@@ -19,17 +18,11 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.block.state.properties.EnumProperty;
-import net.minecraft.world.level.block.state.properties.Half;
 import net.minecraft.world.phys.BlockHitResult;
-import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Overwrite;
-import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;
-import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
@@ -58,10 +51,10 @@ public abstract class TrapDoorBlockMixin extends Block {
             pLevel.setBlock(pPos, pState.cycle(LOCKED), 2);
             if(was_locked){
                 pLevel.playSound(pPlayer, pPos, SoundEvents.WOODEN_DOOR_OPEN, SoundSource.PLAYERS, 0.5F, 1.2F);
-                pPlayer.displayClientMessage(new TranslatableComponent("message.eclectic.trapdoor.unlock"), true);
+                pPlayer.displayClientMessage(Component.translatable("message.eclectic.trapdoor.unlock"), true);
             }else{
                 pLevel.playSound(pPlayer, pPos, SoundEvents.WOODEN_DOOR_CLOSE, SoundSource.PLAYERS, 0.5F, 0.8F);
-                pPlayer.displayClientMessage(new TranslatableComponent("message.eclectic.trapdoor.lock"), true);
+                pPlayer.displayClientMessage(Component.translatable("message.eclectic.trapdoor.lock"), true);
             }
             cir.setReturnValue(InteractionResult.SUCCESS);
             cir.cancel();

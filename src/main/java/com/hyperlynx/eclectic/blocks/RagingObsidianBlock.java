@@ -8,6 +8,7 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -20,7 +21,6 @@ import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
-import java.util.Random;
 
 public class RagingObsidianBlock extends Block {
     public RagingObsidianBlock(Properties prop) {
@@ -33,7 +33,7 @@ public class RagingObsidianBlock extends Block {
     }
 
     @Override
-    public void randomTick(@NotNull BlockState state, @NotNull ServerLevel level, @NotNull BlockPos pos, @NotNull Random random){
+    public void randomTick(@NotNull BlockState state, @NotNull ServerLevel level, @NotNull BlockPos pos, @NotNull RandomSource random){
         Vec3 center = Vec3.atCenterOf(pos);
         if(level.dimensionType().ultraWarm() && ConfigMan.COMMON.ragingBurning.get()) {
             int scale = ConfigMan.COMMON.rageRange.get();
@@ -82,7 +82,7 @@ public class RagingObsidianBlock extends Block {
 
     // Stolen from CryingObsidianBlock, because, well obviously
     @Override
-    public void animateTick(@NotNull BlockState pState, @NotNull Level pLevel, @NotNull BlockPos pPos, @NotNull Random pRandom) {
+    public void animateTick(@NotNull BlockState pState, @NotNull Level pLevel, @NotNull BlockPos pPos, @NotNull RandomSource pRandom) {
         int reps = 1;
         if(pLevel.dimensionType().ultraWarm()) reps = 4;
         for(int i = 0; i < reps; i++) {

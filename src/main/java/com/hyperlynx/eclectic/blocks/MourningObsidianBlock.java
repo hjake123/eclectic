@@ -6,22 +6,13 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.world.effect.MobEffect;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffectUtil;
-import net.minecraft.world.effect.MobEffects;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.Vec3;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.Random;
 
 public class MourningObsidianBlock extends Block {
     public MourningObsidianBlock(Properties prop) {
@@ -48,7 +39,7 @@ public class MourningObsidianBlock extends Block {
 
     @SuppressWarnings("deprecation")
     @Override
-    public void randomTick(@NotNull BlockState state, @NotNull ServerLevel level, @NotNull BlockPos pos, @NotNull Random random){
+    public void randomTick(@NotNull BlockState state, @NotNull ServerLevel level, @NotNull BlockPos pos, @NotNull RandomSource random){
         if(!level.isRaining() && level.canSeeSky(pos.above()) && level.isDay() && level.random.nextFloat() < 0.1){
             level.setBlock(pos, Blocks.OBSIDIAN.defaultBlockState(), 2);
         }else if(level.dimension().equals(Level.NETHER)){
@@ -56,7 +47,7 @@ public class MourningObsidianBlock extends Block {
         }
     }
 
-    public void animateTick(@NotNull BlockState pState, @NotNull Level pLevel, @NotNull BlockPos pPos, Random pRandom) {
+    public void animateTick(@NotNull BlockState pState, @NotNull Level pLevel, @NotNull BlockPos pPos, RandomSource pRandom) {
         if (pRandom.nextInt(100) == 0) {
             Direction direction = Direction.getRandom(pRandom);
             BlockPos blockpos = pPos.relative(direction);

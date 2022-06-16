@@ -5,6 +5,7 @@ import com.google.gson.GsonBuilder;
 import net.minecraft.advancements.critereon.EnchantmentPredicate;
 import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.advancements.critereon.MinMaxBounds;
+import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.DataProvider;
 import net.minecraft.data.HashCache;
@@ -38,7 +39,7 @@ import java.util.Map;
 public abstract class BaseLootTableProvider extends LootTableProvider {
 
     private static final Logger LOGGER = LogManager.getLogger();
-    private static final Gson GSON = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
+   // private static final Gson GSON = new GsonBuilder().setPrettyPrinting().disableHtmlEscaping().create();
 
     protected final Map<Block, LootTable.Builder> lootTables = new HashMap<>();
     private final DataGenerator generator;
@@ -93,7 +94,7 @@ public abstract class BaseLootTableProvider extends LootTableProvider {
 
 
     @Override
-    public void run(@NotNull HashCache cache) {
+    public void run(CachedOutput cache) {
         addTables();
 
         Map<ResourceLocation, LootTable> tables = new HashMap<>();
@@ -103,12 +104,12 @@ public abstract class BaseLootTableProvider extends LootTableProvider {
         writeTables(cache, tables);
     }
 
-    private void writeTables(HashCache cache, Map<ResourceLocation, LootTable> tables) {
+    private void writeTables(CachedOutput cache, Map<ResourceLocation, LootTable> tables) {
         Path outputFolder = this.generator.getOutputFolder();
         tables.forEach((key, lootTable) -> {
             Path path = outputFolder.resolve("data/" + key.getNamespace() + "/loot_tables/" + key.getPath() + ".json");
             try {
-                DataProvider.save(GSON, cache, LootTables.serialize(lootTable), path);
+                DataProvider.saveStable(cache, LootTables.serialize(lootTable), path);
             } catch (IOException e) {
                 LOGGER.error("Couldn't write loot table {}", path, e);
             }

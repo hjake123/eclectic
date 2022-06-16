@@ -1,8 +1,8 @@
 {
   "type": "minecraft:stonecutting",
+  "count": 1,
   "ingredient": {
     "item": "minecraft:smooth_stone"
   },
-  "result": "eclectic:eye_stone",
-  "count": 1
+  "result": "eclectic:eye_stone"
 }

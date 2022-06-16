@@ -37,7 +37,7 @@ public class EyeStoneBlock extends Block {
     public void randomTick(@NotNull BlockState state, @NotNull ServerLevel level, @NotNull BlockPos pos, @NotNull RandomSource random){
         if(level.random.nextFloat() < 0.01 && !state.getValue(CLOSED)){ //Temporary high value
             level.setBlockAndUpdate(pos, state.setValue(CLOSED, true));
-            level.scheduleTick(new BlockPos(pos), this, 15); // Schedule a tick to test if we should remain weighed down.
+            level.scheduleTick(new BlockPos(pos), this, 15); // Schedule a tick to unblink.
         }
     }
 

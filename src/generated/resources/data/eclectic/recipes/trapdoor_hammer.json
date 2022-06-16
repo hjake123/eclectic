@@ -1,18 +1,18 @@
 {
   "type": "minecraft:crafting_shaped",
+  "key": {
+    "c": {
+      "tag": "forge:ingots/copper"
+    },
+    "i": {
+      "tag": "forge:ingots/iron"
+    }
+  },
   "pattern": [
     " ii",
     " ci",
     "c  "
   ],
-  "key": {
-    "i": {
-      "tag": "forge:ingots/iron"
-    },
-    "c": {
-      "tag": "forge:ingots/copper"
-    }
-  },
   "result": {
     "item": "eclectic:trapdoor_hammer"
   }

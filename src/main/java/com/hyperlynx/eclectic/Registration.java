@@ -147,6 +147,8 @@ public class Registration {
     public static final RegistryObject<ParticleType<SimpleParticleType>> LASER_PARTICLE_TYPE = PARTICLES.register("laser",
             () -> LASER_PARTICLE);
 
+    // ----------------------- METHODS ------------------------
+
     // Helper method for BlockItem registration
     public static <B extends Block> RegistryObject<Item> fromBlock(RegistryObject<B> block, CreativeModeTab tab) {
         return ITEMS.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties().tab(tab)));
@@ -157,6 +159,7 @@ public class Registration {
         return ITEMS.register(block.getId().getPath(), () -> new BlockItem(block.get(), new Item.Properties()));
     }
 
+    // Various event handlers to set up different items.
     @SubscribeEvent
     public static void registerParticles(ParticleFactoryRegisterEvent evt) {
         Minecraft.getInstance().particleEngine.register(LASER_PARTICLE_TYPE.get(), LaserParticle.LaserParticleProvider::new);

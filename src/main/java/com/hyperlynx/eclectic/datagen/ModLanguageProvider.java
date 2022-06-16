@@ -24,11 +24,11 @@ public class ModLanguageProvider extends LanguageProvider {
         add(Registration.BLAZE_SCONCE.get(), "Blazing Sconce");
         add(Registration.SOUL_SCONCE.get(), "Soulful Sconce");
         add(Registration.PHANTOM_QUILT.get(), "Phantom Quilt");
-        add(Registration.EYE_STONE.get(), "Observant Stone");
+        add(Registration.EYE_STONE.get(), "Ocular Stone");
         add(Registration.MIND_LANTERN.get(), "Mind Lantern");
         add(Registration.HAMMER_ITEM.get(), "Trapdoor Hammer");
         add("message.eclectic.trapdoor.unlock", "Unstuck");
         add("message.eclectic.trapdoor.lock", "Stuck");
-        add(Registration.MOVING_OBSIDIAN.get(), "Wandering Obsidian");
+        add(Registration.MOVING_OBSIDIAN.get().getDescriptionId(), "Wandering Obsidian");
     }
 }

@@ -1,13 +1,13 @@
 {
   "parent": "minecraft:recipes/root",
-  "rewards": {
-    "recipes": [
-      "eclectic:phantom_quilt"
-    ]
-  },
   "criteria": {
-    "membrane\u0027d": {
-      "trigger": "minecraft:inventory_changed",
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "eclectic:phantom_quilt"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "membrane'd": {
       "conditions": {
         "items": [
           {
@@ -16,19 +16,19 @@
             ]
           }
         ]
-      }
-    },
-    "has_the_recipe": {
-      "trigger": "minecraft:recipe_unlocked",
-      "conditions": {
-        "recipe": "eclectic:phantom_quilt"
-      }
+      },
+      "trigger": "minecraft:inventory_changed"
     }
   },
   "requirements": [
     [
-      "membrane\u0027d",
+      "membrane'd",
       "has_the_recipe"
     ]
-  ]
+  ],
+  "rewards": {
+    "recipes": [
+      "eclectic:phantom_quilt"
+    ]
+  }
 }

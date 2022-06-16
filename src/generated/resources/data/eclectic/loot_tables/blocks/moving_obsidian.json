@@ -2,15 +2,15 @@
   "type": "minecraft:block",
   "pools": [
     {
-      "name": "moving_obsidian",
-      "rolls": 1.0,
       "bonus_rolls": 0.0,
       "entries": [
         {
           "type": "minecraft:item",
           "name": "eclectic:moving_obsidian"
         }
-      ]
+      ],
+      "name": "moving_obsidian",
+      "rolls": 1.0
     }
   ]
 }

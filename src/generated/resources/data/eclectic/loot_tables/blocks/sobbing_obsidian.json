@@ -2,15 +2,15 @@
   "type": "minecraft:block",
   "pools": [
     {
-      "name": "sobbing_obsidian",
-      "rolls": 1.0,
       "bonus_rolls": 0.0,
       "entries": [
         {
           "type": "minecraft:item",
           "name": "eclectic:sobbing_obsidian"
         }
-      ]
+      ],
+      "name": "sobbing_obsidian",
+      "rolls": 1.0
     }
   ]
 }

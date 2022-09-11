@@ -5,7 +5,6 @@ import com.hyperlynx.eclectic.fx.LaserParticle;
 import com.hyperlynx.eclectic.items.PhantomQuiltItem;
 import com.hyperlynx.eclectic.items.Pointer;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.color.block.BlockColors;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.particles.ParticleType;
@@ -21,7 +20,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Material;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.client.event.ParticleFactoryRegisterEvent;
+import net.minecraftforge.client.event.RegisterParticleProvidersEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DistExecutor;
@@ -161,7 +160,7 @@ public class Registration {
 
     // Various event handlers to set up different items.
     @SubscribeEvent
-    public static void registerParticles(ParticleFactoryRegisterEvent evt) {
+    public static void registerParticles(RegisterParticleProvidersEvent evt) {
         Minecraft.getInstance().particleEngine.register(LASER_PARTICLE_TYPE.get(), LaserParticle.LaserParticleProvider::new);
     }
 

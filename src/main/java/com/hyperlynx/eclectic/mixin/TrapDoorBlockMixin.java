@@ -10,6 +10,7 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.TrapDoorBlock;
@@ -22,7 +23,6 @@ import net.minecraft.world.phys.BlockHitResult;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
@@ -65,8 +65,15 @@ public abstract class TrapDoorBlockMixin extends Block {
         }
     }
 
-    @ModifyVariable(method="getStateForPlacement", at=@At("LOAD"))
-    protected BlockState getStateForPlacement(BlockState blockstate) {
-         return blockstate.setValue(LOCKED, false);
+    @Inject(method = "getStateForPlacement", at = @At("RETURN"), cancellable = true)
+    public void getStateForPlacement(BlockPlaceContext context, CallbackInfoReturnable<BlockState> cir){
+        if(context.getPlayer() != null) {
+            if (context.getPlayer().getOffhandItem().is(Registration.HAMMER_ITEM.get())) {
+                cir.setReturnValue(cir.getReturnValue().setValue(LOCKED, true));
+                context.getLevel().playSound(null, context.getClickedPos(), SoundEvents.WOODEN_DOOR_CLOSE, SoundSource.PLAYERS, 0.5F, 0.8F);
+            } else {
+                cir.setReturnValue(cir.getReturnValue().setValue(LOCKED, false));
+            }
+        }
     }
 }
